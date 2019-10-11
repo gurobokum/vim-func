@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language:	FunC
 " Maintainer:	Guro Bokum <jiojiajiu@gmail.com>
-" Last Change:	2019 Oct 08
+" Last Change:	2019 Oct 11
 " Based on c.vim created by Bram Moolenaar <Bram@vim.org>
 
 " Quit when a (custom) syntax file was already loaded
@@ -247,7 +247,9 @@ if exists("c_gnu")
   syn keyword	cStatement	__asm__
   syn keyword	cOperator	typeof __real__ __imag__
 endif
-syn keyword	cType		int builder cell slice var
+syn keyword	funcType	int builder cell slice var tuple
+" TODO: remove
+syn keyword	cType		int
 syn keyword	cType		signed unsigned float double
 if !exists("c_no_ansi") || exists("c_ansi_typedefs")
   syn keyword   cType		size_t ssize_t off_t wchar_t ptrdiff_t sig_atomic_t fpos_t
@@ -414,8 +416,8 @@ endif
 syn match	cUserLabel	display "\I\i*" contained
 
 " Avoid recognizing most bitfields as labels
-syn match	cBitField	display "^\s*\zs\I\i*\s*:\s*[1-9]"me=e-1 contains=cType
-syn match	cBitField	display ";\s*\zs\I\i*\s*:\s*[1-9]"me=e-1 contains=cType
+syn match	cBitField	display "^\s*\zs\I\i*\s*:\s*[1-9]"me=e-1 contains=cType,funcType
+syn match	cBitField	display ";\s*\zs\I\i*\s*:\s*[1-9]"me=e-1 contains=cType,funcType
 
 if exists("c_minlines")
   let b:c_minlines = c_minlines
@@ -485,8 +487,10 @@ hi def link cCppOutSkip		cCppOutIf2
 hi def link cCppInElse2		cCppOutIf2
 hi def link cCppOutIf2		cCppOut
 hi def link cCppOut		Comment
+" TODO: move all instructions into func_ from c_
+hi def link funcType		Type
 
-let b:current_syntax = "c"
+let b:current_syntax = "func"
 
 unlet s:ft
 
