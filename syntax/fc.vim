@@ -22,13 +22,11 @@ if exists("c_autodoc")
   unlet b:current_syntax
 endif
 
-" A bunch of useful C keywords
-syn keyword	cStatement	goto break return continue asm
-syn keyword	cLabel		case default
-syn keyword	cConditional	if else switch
-syn keyword	cRepeat		while for do
+syn keyword	funcConditional	if elseif else
+syn keyword	funcStatement   return asm
+syn keyword	funcRepeat      while repeat until
 
-syn keyword	cTodo		contained TODO FIXME XXX
+syn keyword	cTodo		contained TODO FIXME XXX TODELETE
 
 " It's easy to accidentally add a space after a backslash that was intended
 " for line continuation.  Some compilers allow it, which makes it
@@ -244,7 +242,6 @@ syn match	cWrongComTail	display "\*/"
 
 syn keyword	cOperator	sizeof
 if exists("c_gnu")
-  syn keyword	cStatement	__asm__
   syn keyword	cOperator	typeof __real__ __imag__
 endif
 syn keyword	funcType	int builder cell slice var tuple
@@ -440,10 +437,7 @@ hi def link cFormat		cSpecial
 hi def link cCppString		cString
 hi def link cCommentL		cComment
 hi def link cCommentStart	cComment
-hi def link cLabel		Label
 hi def link cUserLabel		Label
-hi def link cConditional	Conditional
-hi def link cRepeat		Repeat
 hi def link cCharacter		Character
 hi def link cSpecialCharacter	cSpecial
 hi def link cNumber		Number
@@ -468,7 +462,6 @@ hi def link cPreProc		PreProc
 hi def link cDefine		Macro
 hi def link cIncluded		cString
 hi def link cError		Error
-hi def link cStatement		Statement
 hi def link cCppInWrapper	cCppOutWrapper
 hi def link cCppOutWrapper	cPreCondit
 hi def link cPreConditMatch	cPreCondit
@@ -489,6 +482,9 @@ hi def link cCppOutIf2		cCppOut
 hi def link cCppOut		Comment
 " TODO: move all instructions into func_ from c_
 hi def link funcType		Type
+hi def link funcConditional	Conditional
+hi def link funcStatement	Statement
+hi def link funcRepeat		Repeat
 
 let b:current_syntax = "func"
 
