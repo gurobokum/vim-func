@@ -24,7 +24,8 @@ endif
 
 syn keyword	funcConditional	if elseif else
 syn keyword	funcStatement   return asm
-syn keyword	funcRepeat      while repeat until
+syn keyword	funcRepeat      while repeat until throw throw_unless
+syn keyword	funcSpecial     accept_message recv_external recv_internal
 
 syn keyword	cTodo		contained TODO FIXME XXX TODELETE
 
@@ -485,6 +486,7 @@ hi def link funcType		Type
 hi def link funcConditional	Conditional
 hi def link funcStatement	Statement
 hi def link funcRepeat		Repeat
+hi def link funcSpecial 	SpecialChar
 
 let b:current_syntax = "func"
 
