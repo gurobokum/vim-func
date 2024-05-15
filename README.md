@@ -1,9 +1,15 @@
-# Vim FunC syntax file
+# Vim TON FunC syntax file
 
 Forked c.vim
 
 ## Installation with Vundle
 
 ```
-Plugin 'jiojiajiu/vim-func'
+Plugin 'gurobokum/vim-func'
+```
+
+## Installation Vim-Plug
+
+```
+Plug 'gurobokum/vim-func'
 ```
